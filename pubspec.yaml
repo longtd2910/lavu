@@ -1,0 +1,43 @@
+name: lavu
+description: A new Flutter project.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+dependencies:
+  bloc: ^7.2.1
+  carousel_slider: ^4.0.0
+  connectivity_plus: ^2.0.2
+  cupertino_icons: ^1.0.2
+  dartz: ^0.10.0
+  dio: ^4.0.0
+  equatable: ^2.0.3
+  flutter:
+    sdk: flutter
+  flutter_svg: ^0.23.0+1
+  meta: ^1.7.0
+  mockito: ^5.0.16
+  shared_preferences: ^2.0.8
+
+dev_dependencies:
+  flutter_lints: ^1.0.0
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
+  fonts:
+    - family: Butler
+      fonts:
+        - asset: assets/font/Butler/Butler_Regular.otf
+        - asset: assets/font/Butler/Butler_Bold.otf
+          weight: 700
+    - family: Poppins
+      fonts:
+        - asset: assets/font/Poppins/Poppins-Regular.ttf
+        - asset: assets/font/Poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/font/Poppins/Poppins-Light.ttf
+          weight: 300
+  assets:
+    - assets/images/
