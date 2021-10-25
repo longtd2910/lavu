@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
-import '../../../../core/util/constant.dart';
+
 import '../../../../core/data/models/user_model.dart';
+import '../../../../core/util/constant.dart';
 
 abstract class TokenAuthRemoteDataSource {
   Future<UserModel> authToken(String token);

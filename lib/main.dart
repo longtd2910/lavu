@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:lavu/di.dart';
+import 'package:lavu/features/login/presentation/pages/login_page.dart';
+import 'package:lavu/features/login/presentation/pages/test_widgets.dart';
+import 'core/widgets/input_field.dart';
 import 'welcome_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await init();
   runApp(const MyApp());
 }
 
@@ -15,9 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        body: WelcomeScreen(),
-      ),
+      home: LoginPage(),
     );
   }
 }

@@ -1,17 +1,10 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import '../../../../core/domain/entities/user.dart';
-import '../../../../core/util/constant.dart';
-import '../models/login_model.dart';
-import '../../../token_auth/data/datasource/token_auth_remote_data_source.dart';
-import '../../../token_auth/data/repositories/token_auth_repo_imp.dart';
-import '../../../token_auth/domain/repositories/token_auth_repository.dart';
-import '../../../token_auth/domain/usecases/auth_token.dart';
 
 import '../../../../core/data/models/user_model.dart';
 import '../../../../core/error/exceptions.dart';
-import '../../../../core/util/network.dart';
-import 'login_local_data_source.dart';
+import '../../../../core/util/constant.dart';
+import '../../../token_auth/data/repositories/token_auth_repo_imp.dart';
+import '../models/login_model.dart';
 
 abstract class LoginRemoteDataSourceAbs {
   Future<UserModel> loginUser(String username, String password);

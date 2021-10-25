@@ -15,7 +15,9 @@ dependencies:
   equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^7.3.1
   flutter_svg: ^0.23.0+1
+  get_it: ^7.2.0
   meta: ^1.7.0
   mockito: ^5.0.16
   shared_preferences: ^2.0.8
@@ -30,6 +32,8 @@ flutter:
     - family: Butler
       fonts:
         - asset: assets/font/Butler/Butler_Regular.otf
+        - asset: assets/font/Butler/Butler_Medium.otf
+          weight: 500
         - asset: assets/font/Butler/Butler_Bold.otf
           weight: 700
     - family: Poppins
