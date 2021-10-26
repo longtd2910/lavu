@@ -17,10 +17,14 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   //Bloc
-  sl.registerFactory(() => LoginBloc(login: sl()));
+  sl.registerFactory(
+    () => LoginBloc(
+      login: sl(),
+    ),
+  );
 
   //Use cases
-  sl.registerLazySingleton(() => Login(sl()));
+  sl.registerLazySingleton<Login>(() => Login(sl()));
 
   //Repo
   sl.registerLazySingleton<LoginRepository>(
@@ -35,13 +39,13 @@ Future<void> init() async {
   //Data source
   sl.registerLazySingleton<LoginRemoteDataSource>(() => LoginRemoteDataSource(tokenAuthRepositoryImpl: sl(), dio: sl()));
   sl.registerLazySingleton<LoginLocalDataSource>(() => LoginLocalDataSource(sharedPreferences: sl()));
-  sl.registerLazySingleton<TokenAuthLocalDataSourceImpl>(() => TokenAuthLocalDataSourceImpl(sharedPreferences: sl()));
-  sl.registerLazySingleton<TokenAuthRemoteDataSourceImpl>(() => TokenAuthRemoteDataSourceImpl(dio: sl()));
+  sl.registerLazySingleton<TokenAuthLocalDataSource>(() => TokenAuthLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<TokenAuthRemoteDataSource>(() => TokenAuthRemoteDataSourceImpl(dio: sl()));
 
   //Core
   sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImp());
-  sl.registerLazySingleton<Dio>(() => Dio());
   //External
   final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
+  sl.registerLazySingleton<Dio>(() => Dio());
 }

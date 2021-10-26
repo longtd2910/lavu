@@ -22,6 +22,7 @@ class LoginRepositoryImp implements LoginRepository {
 
   @override
   Future<Either<Failure, User>> loginWithCommonCredential(String username, String password) async {
+    print('Repository LoginRepo called with params: $username, $password');
     final UserModel user;
     if (await networkInfo.isConnected) {
       try {

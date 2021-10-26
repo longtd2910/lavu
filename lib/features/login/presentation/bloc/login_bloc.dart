@@ -15,12 +15,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   LoginBloc({
     required this.login,
-  }) : super(LoginLoading());
+  }) : super(LoginInitial());
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
     if (event is GetUserForLoginAction) {
       yield LoginLoading();
 
+      print('Event GetUserForLoginAction triggered with params: ${event.username}, ${event.password}');
       final failureOrUser = await login(Params(username: event.username, password: event.password));
 
       yield* eitherLoadedOrErrorState(failureOrUser);

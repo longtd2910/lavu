@@ -22,6 +22,7 @@ class Login implements UseCase<User, Params> {
 
   @override
   Future<Either<Failure, User>> call(Params params) async {
+    print('Usecase Login called with Param: ${params.username}, ${params.password}');
     return await repository.loginWithCommonCredential(params.username, params.password);
   }
 }

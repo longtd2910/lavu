@@ -18,12 +18,18 @@ class LoginRemoteDataSource implements LoginRemoteDataSourceAbs {
 
   @override
   Future<UserModel> loginUser(String username, String password) async {
+    print('Remote datasource called with params: $username, $password');
     String encryptedPassword = password;
     try {
-      Response response = await dio.post(EndPoint.API_ENDPOINT + EndPoint.COMMON_LOGIN, data: {
+      Response response = await dio.post(EndPoint.API_ENDPOINT + EndPoint.COMMON_LOGIN, queryParameters: {
         'user': username,
         'pass': encryptedPassword,
       });
+      print('API ${EndPoint.API_ENDPOINT + EndPoint.COMMON_LOGIN} result = ${response.data.toString()}');
+      Map<String, dynamic> data = response.data as Map<String, dynamic>;
+      if (data['err'].toString() != '0') {
+        throw ServerException();
+      }
       LoginModel loginModel = LoginModel.fromJson(response.data);
       final failureOrUser = await tokenAuthRepositoryImpl.authToken(loginModel.token);
       final UserModel user = failureOrUser.fold(
@@ -32,6 +38,8 @@ class LoginRemoteDataSource implements LoginRemoteDataSourceAbs {
       );
       return user;
     } on ServerException {
+      throw ServerException();
+    } on Exception {
       throw ServerException();
     }
   }
